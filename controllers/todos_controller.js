@@ -10,6 +10,8 @@ class Todo {
 		var dataTodo = {
 			task_name : req.body.task_name,
 			description : req.body.description,
+			dueDate: req.body.dueDate,
+			eventId: req.body.eventId
 		}
 		dataTodo.userId = decoded.userId
 		TodoModel.create(dataTodo)
@@ -49,8 +51,10 @@ class Todo {
 		.then(dataTodo=>{
 			if(dataTodo !== null) {
 				if(dataTodo.userId == decoded.userId) {
-					TodoModel.update({$set: req.body})
+					const query = {_id:req.params.id}
+					TodoModel.update(query,{$set: req.body})
 					.then(result=>{
+						console.log("masukk")
 						res.status(200).json({message:"todo updated",result})	
 					})
 					.catch(err=>{

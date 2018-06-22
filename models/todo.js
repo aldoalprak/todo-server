@@ -10,9 +10,11 @@ const todoSchema = new Schema({
 	description:{
 		type:  String
 	},
-	status:{
-		type: Boolean,
-		default: false	
+	dueDate:{
+		type: String
+	},
+	eventId:{
+		type: String
 	},	
 	userId:{type: ObjectId, ref: 'User' }
 },{timestamps:true})
