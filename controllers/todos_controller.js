@@ -40,7 +40,7 @@ class Todo {
 			if(err) {
 				res.status(400).json({message:err.message})	
 			}else{
-				res.status(200).send(dataTodos)	
+				res.status(200).json(dataTodos)	
 			}
 		})
 	}
